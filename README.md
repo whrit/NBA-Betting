@@ -1,3 +1,7 @@
+This is essentially a fork/clone/copy of @Kyleskom's NBA ML repo; however it has been updated with my own tweaks, experiments, and what not to make updating the database easier, training "experimental" models, etc. Please feel free to submit a PR or anything related if you make any cool changes you think would be useful for the wider gang to have.
+
+The following below is all of the commands and original content from Kyle's repo. Some of it has been updated to be specific to this repo.
+
 # NBA Sports Betting Using Machine Learning 🏀
 <img src="https://github.com/kyleskom/NBA-Machine-Learning-Sports-Betting/blob/master/Screenshots/output.png" width="1010" height="292" />
 
@@ -22,7 +26,7 @@ Use Python 3.11. In particular the packages/libraries used are...
 Make sure all packages above are installed.
 
 ```bash
-$ git clone https://github.com/kyleskom/NBA-Machine-Learning-Sports-Betting.git
+$ git clone https://github.com/whrit/NBA-Betting.git
 $ cd NBA-Machine-Learning-Sports-Betting
 $ pip3 install -r requirements.txt
 $ python3 main.py -xgb -odds=fanduel
@@ -47,9 +51,9 @@ flask --debug run
 ```
 # Create dataset with the latest data for 2023-24 season
 cd src/Process-Data
-python -m Get_Data
-python -m Get_Odds_Data
-python -m Create_Games
+python -m Get_Data --Seasons 2024-25 (Leave blank w/ no --Seasons for all seasons)
+python -m Get_Odds_Data --Seasons 2024-25 (Leave blank w/ no --Seasons for all seasons)
+python -m Create_Games --Seasons 2024-25 (Leave blank w/ no --Seasons for all seasons)
 
 # Train models
 cd ../Train-Models

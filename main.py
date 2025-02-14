@@ -6,7 +6,7 @@ import tensorflow as tf
 from colorama import Fore, Style
 
 from src.DataProviders.SbrOddsProvider import SbrOddsProvider
-from src.Predict import NN_Runner, XGBoost_Runner
+from src.Predict import XGBoost_Runner
 from src.Utils.Dictionaries import team_index_current
 from src.Utils.tools import create_todays_games_from_odds, get_json_data, to_data_frame, get_todays_games_json, create_todays_games
 
@@ -109,23 +109,23 @@ def main():
     data = get_json_data(data_url)
     df = to_data_frame(data)
     data, todays_games_uo, frame_ml, home_team_odds, away_team_odds = createTodaysGames(games, df, odds)
-    if args.nn:
-        print("------------Neural Network Model Predictions-----------")
-        data = tf.keras.utils.normalize(data, axis=1)
-        NN_Runner.nn_runner(data, todays_games_uo, frame_ml, games, home_team_odds, away_team_odds, args.kc)
-        print("-------------------------------------------------------")
+    # if args.nn:
+    #     print("------------Neural Network Model Predictions-----------")
+    #     data = tf.keras.utils.normalize(data, axis=1)
+    #     NN_Runner.nn_runner(data, todays_games_uo, frame_ml, games, home_team_odds, away_team_odds, args.kc)
+    #     print("-------------------------------------------------------")
     if args.xgb:
         print("---------------XGBoost Model Predictions---------------")
         XGBoost_Runner.xgb_runner(data, todays_games_uo, frame_ml, games, home_team_odds, away_team_odds, args.kc)
         print("-------------------------------------------------------")
-    if args.A:
-        print("---------------XGBoost Model Predictions---------------")
-        XGBoost_Runner.xgb_runner(data, todays_games_uo, frame_ml, games, home_team_odds, away_team_odds, args.kc)
-        print("-------------------------------------------------------")
-        data = tf.keras.utils.normalize(data, axis=1)
-        print("------------Neural Network Model Predictions-----------")
-        NN_Runner.nn_runner(data, todays_games_uo, frame_ml, games, home_team_odds, away_team_odds, args.kc)
-        print("-------------------------------------------------------")
+    # if args.A:
+    #     print("---------------XGBoost Model Predictions---------------")
+    #     XGBoost_Runner.xgb_runner(data, todays_games_uo, frame_ml, games, home_team_odds, away_team_odds, args.kc)
+    #     print("-------------------------------------------------------")
+    #     data = tf.keras.utils.normalize(data, axis=1)
+    #     print("------------Neural Network Model Predictions-----------")
+    #     NN_Runner.nn_runner(data, todays_games_uo, frame_ml, games, home_team_odds, away_team_odds, args.kc)
+    #     print("-------------------------------------------------------")
 
 
 if __name__ == "__main__":

@@ -7,7 +7,7 @@ from sklearn.metrics import accuracy_score
 from sklearn.model_selection import train_test_split
 from tqdm import tqdm
 
-dataset = "dataset_2012-24_new"
+dataset = "dataset_2012-25_new"
 con = sqlite3.connect("../../Data/dataset.sqlite")
 data = pd.read_sql_query(f"select * from \"{dataset}\"", con, index_col="index")
 con.close()
@@ -32,7 +32,7 @@ for x in tqdm(range(300)):
         'objective': 'multi:softprob',
         'num_class': 2
     }
-    epochs = 750
+    epochs = 1000
 
     model = xgb.train(param, train, epochs)
     predictions = model.predict(test)
