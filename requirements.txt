@@ -9,3 +9,5 @@ scikit-learn
 toml
 optuna
 sbrscrape
+nvidia-ml-py
+pynvml
